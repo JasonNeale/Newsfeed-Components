@@ -20,7 +20,9 @@ const data = [
     thirdParagraph: `Dagobah hutt jawa leia calamari ventress skywalker yoda. Binks wicket hutt coruscant sidious
         naboo ackbar tatooine. Hutt lars padmé darth. Maul solo darth darth jabba qui-gon chewbacca darth maul. Moff baba wicket
         han. C-3po antilles moff qui-gon ahsoka aayla dooku amidala. Palpatine droid amidala droid k-3po twi'lek padmé wookiee. Leia
-        moff calamari mon obi-wan. Solo grievous lando coruscant. Jinn darth palpatine obi-wan mon.`
+        moff calamari mon obi-wan. Solo grievous lando coruscant. Jinn darth palpatine obi-wan mon.`,
+    
+    readMore: ``
   },
   {
     title: 'Javascript and You, ES6',
@@ -40,7 +42,9 @@ const data = [
     thirdParagraph: `Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights 
         Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of parchment. Head Boy start-of-term banquet Cleansweep Seven 
         roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot 
-        sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`
+        sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`,
+    
+    readMore: ``
   },
   {
     title: 'React vs Angular vs Vue',
@@ -68,7 +72,9 @@ const data = [
 
     thirdParagraph: `Gotta catch 'em all Horsea gym Ninjask Absol Sinnoh Poliwag. Gotta catch 'em all Youngster wants to fight Soda Pop Floatzel 
         Leech Life Seismitoad Ariados. Earthquake Pokemon Glitch City Tail Whip Skitty Ekans Dialga. Ut aliquip ex ea commodo consequat James 
-        Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`
+        Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`,
+    
+    readMore: ``
   },
   {
     title: 'Professional Software Development in 2019',
@@ -84,7 +90,31 @@ const data = [
 
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
-          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`,
+    
+    readMore: ``
+  },
+  {
+    title: 'Bitcoin Price Signal That Preceded 4,000% Rally Forms Again, and It’s Huge for BTC',
+    date: 'January 18th, 2020',
+    firstParagraph: `Ever since Bitcoin investors got a taste of parabolic price appreciation in 2019, which saw BTC gain 330% in some four months, they’ve been craving it, evidenced in the incessant flow of lofty predictions on Crypto Twitter.`,
+
+    secondParagraph: `Prominent cryptocurrency trader Byzantine General, who earlier this month noted in an analysis that the Bitcoin bottom most likely came in at $6,400, pointed to the below chart on Friday: in it, it shows BTC’s one-month chart with so-called Heiken Ashi candles, which allows traders to more easily “spot market trends and predict future prices” than with normal candles.`,
+
+    thirdParagraph: `What’s interesting about this chart is that the current monthly candle for January is printing a green doji pattern, which would suggest that the long-term Bitcoin price trend is turning positive and that there is an imminent macro reversal on the horizon, if the rally to $9,000 doesn’t count anyway.`,
+  
+    readMore: `https://www.newsbtc.com/2020/01/18/bitcoin-signal-preceded-4000-percent-rally-forming-bullish/`
+  },
+  {
+    title: 'EXCLUSIVE: Bakkt Developing New Ways To Spend & Accept Crypto - Will Launch Officially...',
+    date: 'January 19th, 2020',
+    firstParagraph: `There's always been a lot of hype around Bakkt, starting from the announcement that the company behind the New York Stock Exchange was teaming up with Starbucks and Microsoft to form a company completely revolving around crypto.`,
+
+    secondParagraph: `Since their launch they even managed to exceed expectations, but they also have a lot in the works being built away from the spotlight.`,
+
+    thirdParagraph: `A source who would know (that's as descriptive as they're allowing me be) was able to give an update on some of what Bakkt has been working on behind closed doors.`,
+  
+    readMore: `https://www.globalcryptopress.com/2020/01/exclusive-bakkt-wants-to-lead.html?fbclid=IwAR39aYw1PvWOxi42ZpmbU4L911ElkiCDjiEGkrbBgd3GxaiJauwKgg9Ank0`
   }
 ];
 
@@ -112,3 +142,67 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+const parentComponent = document.querySelector('.articles')
+
+function createArticle(articleData) {
+    const article = document.createElement('div')
+    const articleTitle = document.createElement('h2')
+    const articleDate = document.createElement('p')
+    const articleParagraph1 = document.createElement('p')
+    const articleParagraph2 = document.createElement('p')
+    const articleParagraph3 = document.createElement('p')
+    const articleReadMore = document.createElement('p')
+    const articleReadMoreLink = document.createElement('a')
+    const articleBtn = document.createElement('span')
+
+    article.appendChild(articleTitle)
+    article.appendChild(articleDate)
+    article.appendChild(articleParagraph1)
+    article.appendChild(articleParagraph2)
+    article.appendChild(articleParagraph3)
+
+    if (articleData.readMore != '') {
+        article.appendChild(articleReadMore)
+        articleReadMore.appendChild(articleReadMoreLink)
+        articleReadMoreLink.target = "_blank"
+        articleReadMoreLink.href = articleData.readMore
+        articleReadMoreLink.textContent = 'Read More'
+    }
+    
+
+    article.appendChild(articleBtn)
+
+    article.classList.add('article')
+    articleDate.classList.add('date')
+    articleBtn.classList.add('expandButton')
+
+    articleTitle.textContent = articleData.title
+    articleDate.textContent = articleData.date
+    articleParagraph1.textContent = articleData.firstParagraph
+    articleParagraph2.textContent = articleData.secondParagraph
+    articleParagraph3.textContent = articleData.thirdParagraph
+    articleParagraph3.textContent = articleData.thirdParagraph
+    articleBtn.textContent = 'View More';
+
+    articleBtn.addEventListener('click', function () {
+        article.classList.toggle('article-open')
+
+        switch (articleBtn.textContent) {
+            case 'View More':
+                articleBtn.textContent = 'View Less';
+                break;
+            case 'View Less':
+                articleBtn.textContent = 'View More';
+                break;
+        }
+    })
+
+    return article
+}
+
+
+
+data.forEach(el => {
+    parentComponent.appendChild(createArticle(el))
+})
